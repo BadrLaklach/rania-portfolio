@@ -37,6 +37,7 @@ export const metadata: Metadata = {
     description: "Portfolio de Rania Madmoune, élève-ingénieure en génie électromécanique.",
     siteName: "Rania Madmoune - Portfolio",
     url: "/",
+    images: [{ url: "/rania-photo.jpg", width: 1052, height: 1280, alt: "Rania Madmoune" }],
     locale: "fr_FR",
     type: "website",
   },
@@ -44,6 +45,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "Rania Madmoune | Electromechanical Engineering",
     description: "Portfolio of Rania Madmoune, electromechanical engineering student.",
+    images: ["/rania-photo.jpg"],
   },
 };
 

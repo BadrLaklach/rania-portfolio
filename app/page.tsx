@@ -1,6 +1,7 @@
 "use client";
 
 import { Suspense } from "react";
+import Image from "next/image";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Experience from "./components/Experience";
@@ -40,7 +41,16 @@ export default function Home() {
           <div className="mx-auto max-w-7xl px-6 sm:px-12">
             <SectionTitle title={t.about.title} />
             <div className="grid gap-12 md:grid-cols-[18rem_1fr]">
-              <div className="flex h-80 items-center justify-center rounded-3xl bg-gradient-to-br from-slate-200 via-slate-100 to-slate-300 text-7xl font-semibold text-slate-700 dark:from-slate-800 dark:via-slate-900 dark:to-slate-700 dark:text-slate-200">RM</div>
+              <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-3xl md:mx-0 md:w-72 md:max-w-none">
+                <Image
+                  src="/rania-portfolio/rania-photo.jpg"
+                  alt="Rania Madmoune"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 288px"
+                  className="object-cover object-top"
+                  priority
+                />
+              </div>
               <div>
                 <h3 className="text-4xl font-bold text-gray-900 dark:text-white">Rania Madmoune</h3>
                 <div className="mt-5 flex flex-wrap gap-2">
