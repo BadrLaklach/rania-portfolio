@@ -8,7 +8,7 @@ import { ModeToggle } from "./ModeToggle";
 import { useLanguage } from "@/lib/useLanguage";
 
 export default function Navbar() {
-  const { t } = useLanguage();
+  const { language, setLanguage, t } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const [isBurgerAnimated, setIsBurgerAnimated] = useState(false);
@@ -59,7 +59,7 @@ export default function Navbar() {
     <>
       <nav
         className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[calc(100%-3rem)] md:w-auto"
-        aria-label="Navigation principale"
+        aria-label={language === "fr" ? "Navigation principale" : "Main navigation"}
       >
         <div className="backdrop-blur-sm bg-white/10 dark:bg-black/10 border border-gray-800/30 dark:border-white/30 rounded-full px-8 sm:px-12 shadow-lg">
           <div className="flex justify-between items-center h-14">
@@ -287,12 +287,14 @@ export default function Navbar() {
                   </>
                 )}
               </ul>
-              <div className="ml-8">
+              <div className="ml-8 flex items-center gap-4">
+                <LanguageToggle language={language} setLanguage={setLanguage} />
                 <ModeToggle />
               </div>
             </div>
 
             <div className="md:hidden ml-4 flex items-center gap-2">
+              <LanguageToggle language={language} setLanguage={setLanguage} />
               <ModeToggle />
               <button
                 onClick={handleMenuToggle}
@@ -341,7 +343,7 @@ export default function Navbar() {
           className={`md:hidden fixed inset-0 z-40 bg-gray-50 dark:bg-[#101010] ${isClosing ? "animate-fade-out" : "animate-fade-in"
             }`}
           role="menu"
-          aria-label="Menu mobile"
+          aria-label={language === "fr" ? "Menu mobile" : "Mobile menu"}
         >
           <div
             className={`flex flex-col items-center justify-center h-screen ${isClosing ? "animate-slide-down" : "animate-slide-up"
@@ -511,5 +513,33 @@ export default function Navbar() {
       )
       }
     </>
+  );
+}
+
+function LanguageToggle({
+  language,
+  setLanguage,
+}: {
+  language: "fr" | "en";
+  setLanguage: (language: "fr" | "en") => void;
+}) {
+  return (
+    <div
+      className="flex items-center rounded-full border border-gray-700/30 p-0.5 text-xs font-bold dark:border-white/30"
+      role="group"
+      aria-label={language === "fr" ? "Choisir la langue" : "Choose language"}
+    >
+      {(["fr", "en"] as const).map((option) => (
+        <button
+          key={option}
+          type="button"
+          onClick={() => setLanguage(option)}
+          aria-pressed={language === option}
+          className={`rounded-full px-2 py-1 transition-colors ${language === option ? "bg-[#191919] text-white dark:bg-white dark:text-[#191919]" : "text-gray-700 hover:bg-black/5 dark:text-gray-200 dark:hover:bg-white/10"}`}
+        >
+          {option.toUpperCase()}
+        </button>
+      ))}
+    </div>
   );
 }

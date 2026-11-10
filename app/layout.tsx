@@ -7,6 +7,7 @@ import {
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import { siteStructuredData } from "./seo-jsonld";
+import { LanguageProvider } from "@/lib/useLanguage";
 
 const geist = Geist({
   variable: "--font-geist-sans",
@@ -78,7 +79,7 @@ export default function RootLayout({
           defaultTheme="dark"
           enableSystem={false}
         >
-          {children}
+          <LanguageProvider>{children}</LanguageProvider>
         </ThemeProvider>
       </body>
     </html>
