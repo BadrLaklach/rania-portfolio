@@ -1,0 +1,10 @@
+{
+  "name": "Rania Madmoune",
+  "short_name": "Rania",
+  "description": "Portfolio of Rania Madmoune — electromechanical engineering, automation and industrial digitalization.",
+  "start_url": "/rania-portfolio/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#121212",
+  "icons": [{ "src": "/rania-portfolio/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}
